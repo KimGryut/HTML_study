@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다이얼로그</title>
+
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#dialog').dialog({
+            autoOpen: false,
+            show: { // 열릴 때 효과
+                effect: 'blind',
+                duration: 1000
+            },
+            hide: { // 닫힐 때 효과
+                effect: 'explode',
+                duration: 1000
+            }
+        });
+
+        // 버튼 이벤트 연결
+        $('#opener').click(function(){
+            $('#dialog').dialog('open'); // 다이얼로그 열기
+        });
+    });
+</script>
+</head>
+<body>
+    <div id="dialog">
+    </div>
+    <button id="opener">다이얼로그 열기</button>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		변수명의 정의
+		1. 키워드(예약어)를 사용하면 안 된다.
+		2. 숫자로 시작하면 안 된다.
+		3. 특수문자는 _와 $만 허용한다.
+		4. 공백문자를 포함할 수 없다.
+		
+		식별자를 잘못 지정한 예
+		break(키워드)
+		10alpha(숫자로 시작)
+		#num(특수문자 사용)
+		has space(공백문자 사용)
+		 */
+
+		// 변수 선언
+		var num;
+
+		// 변수에 값을 할당 < 이때 변수의 자료형이 정해짐
+		num = 123;
+
+		// 출력
+		document.write(num);
+		document.write("<br>num = " + num) // + 연산자를 이용해서 연결 가능
+		document.write('<br>');
+		
+		// Tip. 오류가 나면 페이지 우클릭 검사 콘솔에서 오류 문구 확인
+		
+		
+		// 변수에 값을 할당하지 않고 출력 => undefinded
+		var num3;
+		
+		document.write('num3= ' + num3);
+		document.write('<br>');
+		
+		// 두 개 이상 변수 선언
+		var a, b;
+		a=10;
+		b=5;
+		
+		// 변수 연산. 우선 순위 지키기 위해 괄호
+		document.write('a+b= ' + (a+b));
+		document.write('<br>');
+		
+		// 변수 선언과 초기화를 동시에
+		var c=10, d=3.5;
+		
+		document.write('c+d= ' + (c+d));
+		document.write('<br>');
+		
+		// 한글 사용 가능 (권장하지 않음)
+		var 번호 = 3;
+		document.write('번호= ' + 번호);
+		
+	</script>
+</body>
+</html>

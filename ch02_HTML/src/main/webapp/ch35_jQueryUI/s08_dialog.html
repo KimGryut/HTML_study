@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다이얼로그</title>
+
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#dialog').dialog({
+            resizable:false,
+            height:200,
+            modal:true, // 다이얼로그창이 보여질 때 부모 영역을 선택할 수 없음
+            buttons:{
+            	'Delete all items': function(){
+            		$(this).dialog('close')
+            	},
+            	Cancel:function(){
+            		$(this).dialog('close')
+            	}
+            }
+        });
+
+        // 버튼 이벤트 연결
+        $('#opener').click(function(){
+            $('#dialog').dialog('open'); // 다이얼로그 열기
+        });
+    });
+</script>
+</head>
+<body>
+    <div id="dialog">
+        <p>우와아아아</p>
+    </div>
+    <div>welcome</div>
+
+</body>
+</html>

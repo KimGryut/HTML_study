@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>형변환</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 입력한 데이터를 string 타입으로 반환
+		var input = prompt('숫자를 입력하세요', '숫자');
+		document.write(typeof(input) + ':' + input);
+		document.write('<br>');
+		
+		// 데이터가 숫자일 경우 자동적으로 형변환됨
+		document.write(input * 10); // 곱셈은 자동 형변환
+		document.write('<br>');
+		
+		// + 연산의 경우 문자열이 있으면 덧셈이 아니라 연결시켜버림
+		// 연산시 명시적 형변환이 필요
+		document.write(input + 10); // 덧셈은 문자열 합치는 연산자 + 로 작동
+		
+		// 명시적 형변환
+		// 문자(열)을 숫자로 변환
+		var numberInput = Number(input); // 문자 -> 숫자
+		document.write('<br>형변환 이후<br>');
+		document.write(typeofw(numberInput) + ':' + numberInput);
+		document.write('<br>');
+		document.write(numberInput + 10);
+		
+	</script>
+</body>
+</html>

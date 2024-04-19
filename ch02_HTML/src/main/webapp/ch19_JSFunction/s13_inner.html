@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내부 함수</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function f(){
+			let n = 123;
+			// 내부 함수
+			function g(){ // 이 안에 있는 n은 f 함수의 내부이므로 호출 가능
+				document.write('n= ' +n + '<br>');
+				document.write('g함수 호출');
+			}
+			// 내부 함수 호출
+			g();
+		}
+		
+		f();
+	</script>
+</body>
+</html>

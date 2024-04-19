@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비교 연산자</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a=20, b='20', result;
+		
+		// 값만 비교 (자료형 비교x -> 자동 형변환)
+		result = a==b;
+		document.write('a==b: ' + result + '<br>');
+		
+		result = a!=b;
+		document.write('a!=b: ' + result + '<br>');
+		
+		result = (a>b);
+		document.write('a > b: ' + result + '<br>');
+		
+		result = (a<b);
+		document.write('a < b: ' + result + '<br>');
+		
+		/*
+		연산자				설명
+		x===y			x와 y의 값과 타입이 같으면 true
+		x!==y			x와 y의 값 또는 타입이 같으면 true
+		*/ 
+		
+		result = a===b;
+		document.write('a===b: ' + result + '<br>');
+		
+		result = a!==b;
+		document.write('a!==b: ' + result + '<br>');
+		
+		
+		
+		
+	</script>
+</body>
+</html>

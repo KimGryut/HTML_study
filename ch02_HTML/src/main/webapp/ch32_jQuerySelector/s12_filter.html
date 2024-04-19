@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 입력 양식 필터 선택자2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+	/*
+    기본 필터 선택자
+    선택자 형태          설명
+    요소:odd          홀수 번째에 위치한 문서 객체를 선택
+    요소:even         짝수 번째에 위치한 문서 객체를 선택
+    요소:first        처음에 위치한 문서 객체를 선택
+    요소:last         마지막에 위치한 문서 객체를 선택
+	 */
+      
+	$(document).ready(function() {
+	    $('tr:odd').css('background', 'yellow');
+	    $('tr:even').css('background', 'pink');
+	    /*
+	    $('tr:first').css('background', '#000000');
+	    $('tr:first').css('color', '#FFFFFF');
+	    */
+	    $('tr:first').css('background', '#000000').css('color', '#FFFFFF');
+	});
+</script>
+</head>
+<body>
+	<table>
+	    <tr>
+	        <th>이름</th><th>혈액형</th><th>지역</th>
+	    </tr>
+	    <tr>
+	        <th>강민수</th><th>AB형</th><th>서울</th>
+	    </tr>
+	    <tr>
+            <th>홍길동</th><th>O형</th><th>부산</th>
+        </tr>
+        <tr>
+            <th>류현민</th><th>B형</th><th>경기도</th>
+        </tr>
+        <tr>
+            <th>서찬희</th><th>AB형</th><th>서울</th>
+        </tr>
+        <tr>
+            <th>류연민</th><th>B형</th><th>경기도</th>
+        </tr>
+        <tr>
+            <th>윤영철</th><th>A형</th><th>광주</th>
+        </tr>
+        <tr>
+            <th>김현준</th><th>AB형</th><th>대구</th>
+        </tr>
+	</table>
+</body>
+</html>
+
+
+
+

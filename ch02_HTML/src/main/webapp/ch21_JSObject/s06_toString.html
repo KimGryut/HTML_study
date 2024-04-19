@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>toString</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 빈 객체 생성
+		const student = {};
+
+		document.write(student);
+		document.write('<br>');
+		document.write(student.toString());
+
+		// 객체에 속성 추가
+		student.이름 = '박문수';
+		student.취미 = '악기';
+		student.특기 = '프로그래밍';
+		
+		document.write('<br>------------<br>');
+
+        // 객체에 메서드 추가
+        student.toString = function() {
+            let msg = '';
+            for (let key in this) { // 내부 메서드이므로 student보다 this 사용 권장
+            	if(key != 'toString'){ // toString은 제외
+            		msg += key + ': ' + this[key] + '<br>'	
+            	}
+                
+            }
+            return msg;
+        };
+		
+        // 둘이 같은 것
+		document.write(student.toString());
+		document.write('<br>------------<br>');
+		document.write(student);
+		
+	</script>
+</body>
+</html>
