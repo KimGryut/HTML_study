@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클릭 이벤트, mouseover, mouseout</title>
+<style>
+    .reverse{
+        background-image:url(../files/landscape.jpg);
+        color:white;
+    }
+</style>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        // 이벤트 연결
+        $('h1').hover(function(){
+        	// mouseover
+        	$(this).addClass('reverse');
+        }, function(){
+        	// mouseout
+        	$(this).removeClass('reverse');
+        });
+    });
+</script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
+</html>
