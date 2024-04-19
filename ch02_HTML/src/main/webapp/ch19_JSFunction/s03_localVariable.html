@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지역 변수 전역 변수</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		1. 지역변수(함수 레벨 스코프)
+		함수 안에서 var를 사용해서 선언한 변수, 함수가 끝나면 소멸
+		
+		2. 전역변수
+		함수 밖에서 만들어진 모든 변수
+		함수 안에서 var 없이 만들어진 변수
+		함수가 끝나도 메모리에 남아 있음
+		*/
+		
+		// 지역 변수
+		function test1(){
+			
+		var i = 10; // 지역 변수
+		document.write(i + '<br>');
+		}
+		
+		test1();
+		
+		// 출력 안 되고 오류 -> 지역 변수는 함수가 종료되면 소멸되기 때문에 함수 바깥에서 호출 불가능
+		// document.write(i + '<br>');
+		
+		
+		// 전역 변수
+		var j;
+		function test2(){
+			j = 200;
+			document.write(j+'<br>');
+		}
+		
+		test2();
+		
+		function test3(){
+			document.write(j+'<br>');
+		}
+		
+		test3();
+		
+		
+		// 전역 변수
+		// var를 명시하지 않고 전역 변수를 만들면 선언과 함께 초기화를 해야 함
+		// 그다지 권장하지 않음 (선언인지 갱신인지 헷갈릴 수 있기 때문에)
+		a=10;
+		
+		function test4(){
+			document.write(a + '<br>');
+		}
+		
+		test4();
+		
+		
+		// 전역 변수
+		// 함수 내에서 var를 명시하지 않고 변수를 선언하면 전역 변수
+		function test5(){
+			m=300;
+			document.write(m+'<br>');
+		}
+		
+		test5();
+		
+		document.write(m+'<br>');
+		
+	</script>
+</body>
+</html>

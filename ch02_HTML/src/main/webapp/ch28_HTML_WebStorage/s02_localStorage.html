@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로컬 스토리지</title>
+<script type="text/javascript">
+    window.onload=function(){
+        const save = document.getElementById('save');
+        const load = document.getElementById('load');
+        const num = document.getElementById('num');
+        const name = document.getElementById('name');
+        const addr = document.getElementById('addr');
+        
+        // 이벤트 연결
+        save.onclick = function(){
+            // 사용자가 입력한 번호, 이름, 주소 읽어옴
+            /* const numVal = num.value;
+            const nameVal = name.value;
+            const addrVal = addr.value;
+             */
+            // JSON 형식의 문자열
+            let memberStr = '{"num":"' + num.value + '", "name":"' + name.value + '" ,"addr":"' + addr.value +'"}';
+            
+            // 로컬 스토리지에 저장
+            localStorage.member = memberStr;
+            
+            // 개별적으로도 저장할 수 있음
+           /*  localStorage.setItem('num', numVal);
+            localStorage.setItem('name', nameVal);
+            localStorage.setItem('addr', addrVal); */
+            
+            num.value='';
+            name.value='';
+            addr.value='';
+        };
+
+        load.onclick = function(){
+        	// 저장된 문자열 읽어오기
+            let loadedMemberStr = localStorage.member;
+            // 문자열을 객체로 변환
+            const memberObj = JSON.parse(loadedMemberStr);
+            // 객체의 속성 호출
+            alert(memberObj.num + ', ' +memberObj.name +', ' + memberObj.addr);
+        };
+        
+    };
+</script>
+
+</head>
+<body>
+    번호 <input type="text" id="num"><br>
+    이름 <input type="text" id="name"><br>
+    주소 <input type="text" id="addr"><br>
+    저장 <button id="save">저장</button>
+    불러오기 <button id="load">불러오기</button>
+</body>
+</html>
