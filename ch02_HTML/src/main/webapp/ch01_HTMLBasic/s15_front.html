@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+<html>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<title>인터파크 티켓</title>
+<style type="text/css">
+
+
+/*창 작아지면 못 보게끔*/
+@media ( max-width :1750px) {
+	#header, #adBanner, #adImage, #video, #review, #ad, #footer{
+		display: none;
+	}
+}
+
+@media ( min-width :2000px) {
+	#header, #adBanner, #adImage, #video, #review, #ad,#footer{
+		display: none;
+	}
+}
+
+#error{
+	position: relative; 
+	top: 200px;
+	text-align: center;
+}
+
+#error h1{
+	color: red;
+}
+
+#logo {
+	position:absolute;
+	top: 48px;
+	left: 340px;
+	width: 200px;
+}
+
+#search {
+	position: absolute;
+	top: 50px;
+	left: 550px;
+	width: 350px;
+	height: 45px;
+	border-radius: 30px;
+	border-color: #d6d6d6;
+}
+
+#submit {
+	position: absolute;
+	top: 62px;
+	left: 840px;
+}
+
+
+
+
+
+ul.menu1 {
+	list-style: none; /*목록의 점 아이콘 제거*/
+	position: absolute;
+	top: 120px;
+	left: 280px;
+}
+
+ul.menu1 li {
+	display: inline; /*리스트를 가로로 표시*/
+}
+
+ul.menu1 li a {
+	text-decoration: none;
+	color: black;
+	display: inline-block;
+	text-align: center;
+	font-size: 13pt;
+	font-weight: bold;
+	font-family: "Gothic A1";
+	margin-right: 15px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+ul.menu1 li a:hover {
+	border: 1px solid black;
+	border-width: 2px;
+	border-top-color: white;
+	border-right-color: white;
+	border-left-color: white;
+	text-decoration: none;
+}
+
+ul.menu1 li a.p {
+	color: #a91df0;
+}
+
+ul.menu2 {
+	list-style: none;
+	position: absolute;
+	top: 45px;
+	right: 280px;
+}
+
+ul.menu2 li {
+	display: inline; /*리스트를 가로로 표시*/
+}
+
+ul.menu2 li a {
+	text-decoration: none;
+	color: #4a4a4a;
+	display: inline-block;
+	text-align: center;
+	font-size: 10pt;
+	font-family: "Gothic A1";
+	margin-right: 15px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+.advertisement {
+	width: 100%;
+	height: 700px;
+	position: absolute;
+	top: 200px;
+	overflow: hidden;
+}
+
+.e1 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 28px;
+	top: 800px;
+	overflow: hidden;
+}
+
+.e2 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 128px;
+	top: 800px;
+	overflow: hidden;
+}
+
+.e3 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 228px;
+	top: 800px;
+	overflow: hidden;
+}
+
+.e4 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 328px;
+	top: 800px;
+	overflow: hidden;
+}
+
+.image {
+	width: 100%;
+}
+
+.showe2 {
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+#q1 {
+	border-radius: 10px;
+	position: absolute;
+	left: 470px;
+	top: 1000px;
+	width: 300px;
+	height: 100px;
+}
+
+#q2 {
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 1000px;
+	width: 300px;
+	height: 100px;
+}
+
+#q3 {
+	border-radius: 10px;
+	position: absolute;
+	right: 470px;
+	top: 1000px;
+	width: 300px;
+	height: 100px;
+}
+
+#q4 {
+	border-radius: 10px;
+	position: absolute;
+	left: 470px;
+	top: 1125px;
+	width: 300px;
+	height: 100px;
+}
+
+#q5 {
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 1125px;
+	width: 300px;
+	height: 100px;
+}
+
+#q6 {
+	border-radius: 10px;
+	position: absolute;
+	right: 470px;
+	top: 1125px;
+	width: 300px;
+	height: 100px;
+}
+
+.div-word {
+	color: white;
+	font-family: "Noto Sans KR";
+	text-shadow: 1px 1px black;
+}
+
+.div-sen {
+	color: white;
+	font-size: 11pt;
+	font-family: "Noto Sans KR";
+	text-shadow: 0.5px 0.5px black;
+}
+
+ul.menu3 {
+	list-style: none; /*목록의 점 아이콘 제거*/
+	position: absolute;
+	top: 1400px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+ul.menu3 li {
+	display: inline; /*리스트를 가로로 표시*/
+}
+
+ul.menu3 li a {
+	text-decoration: none;
+	color: #636363;
+	display: inline-block;
+	text-align: center;
+	font-size: 10pt;
+	font-family: "Gothic A1";
+	margin-right: 20px;
+	height: 30px;
+	padding: 5px 20px;
+	border: 0.5px solid #d6d6d6;
+	border-radius: 30px;
+	justify-content: center;
+	line-height: 30px;
+}
+
+ul.menu3 li a:hover {
+	background-color: #a91df0;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+.video-title{
+	position: absolute;
+	left: 50%;
+	top: 1320px;
+	text-align: center;
+	transform: translateX(-50%);
+}
+
+
+#v1 {
+	border: 1px solid #d6d6d6;
+	border-radius: 10px;
+	position: absolute;
+	left: 20%;
+	top: 1500px;
+	width: 300px;
+	height: 220px;
+}
+
+#v1 p {
+	font-weight: bold;
+}
+
+#v2 {
+	border: 1px solid #d6d6d6;
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 1500px;
+	width: 300px;
+	height: 220px;
+}
+
+#v2 p {
+	font-weight: bold;
+}
+
+#v3 {
+	border: 1px solid #d6d6d6;
+	border-radius: 10px;
+	position: absolute;
+	right: 20%;
+	top: 1500px;
+	width: 300px;
+	height: 220px;
+}
+
+#v3 p {
+	font-weight: bold;
+}
+
+#ad{
+	position: absolute;
+	top: 1800px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ad {
+	display: block;
+	margin: 0 auto;
+	
+}
+
+
+.review-title{
+	position: absolute;
+	left: 50%;
+	top: 2050px;
+	text-align: center;
+	transform: translateX(-50%);
+}
+
+#t1 {
+	position: absolute;
+	left: 310px;
+	top: 2150px;
+	width: 600px;
+	height: 260px;
+}
+
+#t2 {
+	position: absolute;
+	right: 310px;
+	top: 2150px;
+	width: 600px;
+	height: 260px;
+}
+
+#t3 {
+	position: absolute;
+	left: 310px;
+	top: 2450px;
+	width: 600px;
+	height: 260px;
+}
+
+#t4 {
+	position: absolute;
+	right: 310px;
+	top: 2450px;
+	width: 600px;
+	height: 260px;
+}
+
+.poster {
+	border: 0.5px solid #d6d6d6;
+	border-radius: 10px;
+	width: 150px;
+	height: 200px;
+	text-align: center;
+	position: absolute;
+	top: 10%;
+	right: 1%;
+	overflow: hidden;
+}
+
+.title {
+	width: 250px;
+	height: 40px;
+	position: absolute;
+	top: 15%;
+	left: 1%;
+}
+
+.info {
+	width: 250px;
+	height: 30px;
+	position: absolute;
+	top: 11%;
+	left: 1%;
+}
+
+.info span {
+	color: #999999;
+	font-size: 10pt;
+	font-family: "Noto Sans KR";
+}
+
+.epic {
+	width: 400px;
+	height: 150px;
+	position: absolute;
+	top: 31%;
+	left: 1%;
+}
+
+.epic p {
+	color: #999999;
+	font-size: 11pt;
+	font-family: "Noto Sans KR";
+	letter-spacing: 0.9px;
+}
+
+.profile {
+	border-radius: 50px;
+	position: absolute;
+	bottom: 1%;
+	left: 1%;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+}
+
+.nickname {
+	position: absolute;
+	bottom: 3%;
+	left: 9%;
+	width: 50px;
+	height: 20px;
+}
+
+.nickname span {
+	color: #999999;
+	font-family: "Noto Sans KR";
+}
+
+ul.menu4 {
+	list-style: none; /*목록의 점 아이콘 제거*/
+	position: absolute;
+	top: 2800px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+ul.menu4 li {
+	display: inline; /*리스트를 가로로 표시*/
+}
+
+ul.menu4 li a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	font-size: 13pt;
+	font-family: "Gothic A1";
+	margin-right: 20px;
+	height: 30px;
+	padding: 5px 20px;
+	border: 0.5px solid #d6d6d6;
+	border-radius: 30px;
+	justify-content: center;
+	line-height: 30px;
+}
+
+ul.menu4 li a:hover {
+	background-color: #a91df0;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#footer {
+	background: #ebebeb;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top:3000px;
+	width: 100%;
+	height: 200px;
+}
+
+
+
+ul.menu5 {
+	list-style: none; /*목록의 점 아이콘 제거*/
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+ul.menu5 li {
+	display: inline; /*리스트를 가로로 표시*/
+}
+
+ul.menu5 li a {
+	text-decoration: none;
+	color: gray;
+	display: inline-block;
+	text-align: center;
+	font-size: 11pt;
+	font-family: "Gothic A1";
+	margin-right: 50px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+ul.menu5 li a:hover {
+	color: black;
+	font-weight:bold;
+}
+
+
+.footer1{
+	position: absolute;
+	left:10%;
+	top: 25%;
+	width: 400px;
+	height: 100px;
+}
+
+.footer2{
+	position: absolute;
+	left: 50%;
+	top: 25%;
+	transform: translateX(-50%);
+	width: 400px;
+	height: 100px;
+}
+
+.footer3{
+	position: absolute;
+	right: 10%; 
+	top: 25%;	
+	width: 400px;
+	height: 100px;	
+}
+
+.foot-title{
+	color:gray;
+	font-size:10pt;
+	font-weight: bold;
+}
+
+.foot-text{
+	color:#ADAFAD;
+	font-size:8pt;
+} 
+
+</style>
+</head>
+<body>
+
+
+	<section id="error"><h1>창을 전체 화면에 100% 비율로 해주세요</h1></section>
+	
+	
+	<!-- 메인 상단 헤더 -->
+	<section id="header">
+		<!-- 로고 -->
+		<img src="../files/logo.png" id="logo">
+		
+		<!-- 검색창 -->
+		<form>
+			<input type="search" name="search" id="search"
+				placeholder="&nbsp;&nbsp;&nbsp;청년문화예술패스 최대 15만원 지원!"> <input
+				type="submit" value="검색" id="submit">
+		</form>
+
+		<!-- 메인 메뉴 -->
+		<ul class="menu1">
+			<li><a href="#">뮤지컬</a></li>
+			<li><a href="#">콘서트</a></li>
+			<li><a href="#">스포츠</a></li>
+			<li><a href="#">전시/행사</a></li>
+			<li><a href="#">클래식/무용</a></li>
+			<li><a href="#">아동/가족</a></li>
+			<li><a href="#">연극</a></li>
+			<li><a href="#">레저/캠핑</a></li>
+			<li><a href="#">토핑</a></li>
+			<li><a href="#">MD샵</a></li>
+
+			<li><a href="#" class="p">랭킹</a></li>
+			<li><a href="#" class="p">오픈공지</a></li>
+			<li><a href="#" class="p">지역별</a></li>
+			<li><a href="#" class="p">공연장</a></li>
+		</ul>
+
+		<!-- 사이드 메뉴(회원 관련) -->
+		<ul class="menu2">
+			<li><a href="#">로그인</a></li>
+			<li><a href="#">회원가입</a></li>
+			<li><a href="#">마이페이지</a></li>
+		</ul>
+	</section>
+	
+	
+
+
+
+	<!-- 광고 배너 -->
+	<section id="adBanner">
+	
+		<!-- 큼지막한 광고 사진 -->
+		<div class="advertisement">
+			<img src="../files/b1.jpg" class="image" id="b1">
+		</div>
+		<div class="advertisement">
+			<img src="../files/b2.jpg" class="image" id="b2">
+		</div>
+		<div class="advertisement">
+			<img src="../files/b3.jpg" class="image" id="b3">
+		</div>
+		<div class="advertisement">
+			<img src="../files/b4.jpg" class="image" id="b4">
+		</div>
+		
+		<!-- 아이콘처럼 작은 사진 -->
+		<div class="e1">
+			<img src="../files/e1.jpg" class="image">
+		</div>
+		<div class="e2">
+			<img src="../files/e2.jpg" class="image">
+		</div>
+		<div class="e3">
+			<img src="../files/e3.jpg" class="image">
+		</div>
+		<div class="e4">
+			<img src="../files/e4.jpg" class="image">
+		</div>
+	</section>
+
+
+
+	<!-- 광고 이미지 -->
+	<section id="adImage">
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q1">
+			<img src="../files/q1.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q1">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 하데스타운</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;기다려줘 내가 갈게</span>
+		</div>
+		
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q2">
+			<img src="../files/q2.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q2">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 사의찬미</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;난 그런 사랑을 원해</span>
+		</div>
+		
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q3">
+			<img src="../files/q3.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q3">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 아가사</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;여긴 내 꿈속이잖아</span>
+		</div>
+		
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q4">
+			<img src="../files/q4.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q4">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;연극 작은 아씨들</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;난 천국에서도 그리워할 거야</span>
+		</div>
+		
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q5">
+			<img src="../files/q5.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q5">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;연극 오만과 편견</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;언제부터 나를 좋아하게 된
+				거예요?</span>
+		</div>
+		
+		<!-- 광고 이미지 -->
+		<div class="advertisement" id="q6">
+			<img src="../files/q6.jpg" class="image">
+		</div>
+		<!-- 광고 문구 -->
+		<div id="q6">
+			<h3 class="div-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 배니싱</h3>
+			<span class="div-sen">&nbsp;&nbsp;&nbsp;&nbsp;널 좀 봐, 나랑 똑같아</span>
+		</div>
+	</section>
+
+
+
+	<!-- 추천 영상 보여주기 -->
+	<section id="video">
+		<!-- 타이틀 -->
+		<div class="video-title"><h2  >인터파크 PLAY</h2></div>
+		<!-- 메뉴 -->
+		<ul class="menu3">
+			<li><a href="#">추천영상</a></li>
+			<li><a href="#">뮤지컬</a></li>
+			<li><a href="#">콘서트</a></li>
+			<li><a href="#">클래식/무용</a></li>
+			<li><a href="#">연극</a></li>
+		</ul>
+		
+		<!-- 첫 번째 영상 -->
+		<div class="advertisement" id="v1">
+			<iframe width="100%"
+				src="https://www.youtube.com/embed/7Txlpjh3Cjc?si=5hrL7s3UbNMamnG3"
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+		<!-- 첫 번째 영상 제목 -->
+		<div class="advertisement" id="v1">
+			<p>
+				<br><br><br><br><br><br><br>&nbsp;뮤지컬 '하데스타운' Epic III song by 조형균
+			</p>
+		</div>
+
+		<!-- 두 번째 영상 -->
+		<div class="advertisement" id="v2">
+			<iframe width="100%"
+				src="https://www.youtube.com/embed/Ehzcx3Qr32A?si=zekuGQGJ-r3jhauO"
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+		<!-- 두 번째 영상 설명-->
+		<div class="advertisement" id="v2">
+			<p>
+				<br><br><br><br><br><br><br>&nbsp;[2022 사의찬미] 음원 공개 ♬난 그런 사랑을 원해
+			</p>
+		</div>
+
+		<!-- 세 번째 영상 -->
+		<div class="advertisement" id="v3">
+			<iframe width="100%"
+				src="https://www.youtube.com/embed/3vJX_p9iBzA?si=R20KnsWr529cfHXv"
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+		<!-- 세 번째 영상 설명-->
+		<div class="advertisement" id="v3">
+			<p>
+				<br><br><br><br><br><br><br>&nbsp;뮤지컬 아가사 AGATHA 스페셜 커튼콜 ‘꿈 속으로‘ - 이정화
+			</p>
+		</div>
+	</section>
+
+	
+	
+	<!-- 광고 -->
+	<img src="../files/ad.png" class="ad" id="ad">
+	
+
+
+	<section id="review">
+		<div class="review-title"> <h2 align="center">베스트 관람후기</h2></div>
+		<br>
+		<br>
+		<div id="t1">
+			<div class="poster">
+				<img src="../files/p1.jpg" class="image">
+			</div>
+			<div class="title">
+				<h3>추리소설의 여왕!</h3>
+			</div>
+			<div class="info">
+				<span>뮤지컬 &lt;아가사&gt;</span>
+			</div>
+			<div class="epic">
+				<p>평소 추리소설을 좋아해서 관심 갖게 된 뮤지컬이었는데 관람하고 무척 만족했습니다. 미래와 과거, 소설과 현실,
+					저택과 호텔을 넘나드는 내용 속 마냥 무겁지만 않게 미스터리한 분위기가 좋았어요. 또 3층까지 가득 차 있는 무대 세트,
+					공간과 시점을 오가는 극 내용을 친절하게 알려주는 LED 무대 배경이 인상 깊었습니다!</p>
+			</div>
+			<div class="profile">
+				<img src="../files/pf1.png" class="image">
+			</div>
+			<div class="nickname">
+				<span>luvmeor*****</span>
+			</div>
+		</div>
+		<div id="t2">
+			<div class="poster">
+				<img src="../files/p2.jpg" class="image">
+			</div>
+			<div class="title">
+				<h3>중독성 있는 넘버</h3>
+			</div>
+			<div class="info">
+				<span>뮤지컬 &lt;사의찬미&gt;</span>
+			</div>
+			<div class="epic">
+				<p>친구가 추천해줘서 보러갔다가 넘버에 중독돼서 나옴. 정말 하루종일 날개가 찢긴 한마리의 물새~~ 저 바다에
+					쓴다~~~~~~~ 광!!! 막한~~~~ 가정도 지위도 재산도 신분도!! ...사랑도. 거리고 있는 나 자신을 발견할 수
+					있음... 개인적으로 얼른 돌아왔으면 좋겠는 뮤지컬 탑쓰리 안에 듦. 화범 제발...</p>
+			</div>
+			<div class="profile">
+				<img src="../files/pf2.png" class="image">
+			</div>
+			<div class="nickname">
+				<span>ddang*****</span>
+			</div>
+		</div>
+		<div id="t3">
+			<div class="poster">
+				<img src="../files/p3.jpg" class="image">
+			</div>
+			<div class="title">
+				<h3>배꼽 잡고 나왔어요</h3>
+			</div>
+			<div class="info">
+				<span>연극 &lt;아트&gt;</span>
+			</div>
+			<div class="epic">
+				<p>드라마에서 본 배우분들이 연극을 하신다길래 보러 갔는데 100분 동안 진짜 재밌고 웃겼어요 생각보다 친구관계에
+					대한 여러 생각이 드는 작품이기도 했고요 다음에 다른 배우님들 볼 때는 꼭 친구랑 같이 가서 끝나고 얘기해보고 싶네요!
+					ㅎㅎ</p>
+			</div>
+			<div class="profile">
+				<img src="../files/pf3.png" class="image">
+			</div>
+			<div class="nickname">
+				<span>leave*******</span>
+			</div>
+		</div>
+
+
+		<div id="t4">
+			<div class="poster">
+				<img src="../files/p4.jpg" class="image">
+			</div>
+			<div class="title">
+				<h3>역시 명작은 명작!</h3>
+			</div>
+			<div class="info">
+				<span>연극 &lt;오만과 편견&gt;</span>
+			</div>
+			<div class="epic">
+				<p>연극은 처음이었는데 신선했던 것 같아요. 특히 오만과 편견은 1인 다역으로 진행되는 연극이라 정말 신기했어요.
+					처음에는 캐릭터를 구분하지 못하면 어떡하나 걱정했는데, 워낙 캐릭터별로 특징이 뚜렷하고 배우님들이 톤도 확실하게
+					구분해주셔서 어렵지 않게 구분할 수 있었습니다. 내용도 재밌고 좋았어요!</p>
+			</div>
+			<div class="profile">
+				<img src="../files/pf4.png" class="image">
+			</div>
+			<div class="nickname">
+				<span>kkakoong****</span>
+			</div>
+		</div>
+
+		<ul class="menu4">
+			<li><a href="#">관람후기 전체보기 &gt;</a></li>
+		</ul>
+
+
+	</section>
+
+
+	<footer id="footer">
+		<div>
+			<ul class="menu5">
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">개인정보처리방침</a></li>
+				<li><a href="#">티켓판매안내</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+		</div>
+			
+
+		<div class="footer1">
+			<p class="foot-title">(주)인터파크트리플</p>
+			<p class="foot-text">			
+			주소 서울시 강남구 삼성로 512 삼성동빌딩 10층 <br>
+			사업자등록번호 824-81-02515 사업자정보확인 <br>
+			통신판매업신고 2022-서울강남-02179 <br>
+			관광사업증 등록번호 : 제2014-42호 <br>
+			호스팅서비스제공자 (주)인터파크트리플｜대표이사 최휘영 
+			</p>
+		</div>
+		
+		<div class="footer2">
+			<p class="foot-title">전자금융거래 분쟁처리 담당</p>
+			<p class="foot-text">			
+			투어 1588-3443｜티켓 1544-1555 <br>
+			팩스 02-830-8295｜이메일 intersolution@interparktriple.com <br>
+			개인정보보호책임자 cpo@interparktriple.com
+			</p>
+		</div>
+		
+		<div class="footer3">
+			<p class="foot-title">고객센터</p>
+			<p class="foot-text">			
+			투어 1588-3443｜티켓 1544-1555 <br>
+			팩스 02-830-7807｜이메일 helpdesk@interparktriple.com<br>
+			해외항공 02-3479-4399｜국내항공 02-3479-4340<br>
+			투어 1:1문의｜티켓 1:1문의
+			</p>
+		</div>
+		
+	</footer>
+
+	<script>
+		document.querySelector('.e2').addEventListener('mouseover', function() {
+			document.getElementById('b1').classList.add('showe2');
+			document.getElementById('b3').classList.add('showe2');
+			document.getElementById('b4').classList.add('showe2');
+			document.getElementById('b2').classList.remove('showe2');
+		});
+
+
+		document.querySelector('.e1').addEventListener('mouseover', function() {
+			document.getElementById('b2').classList.add('showe2');
+			document.getElementById('b3').classList.add('showe2');
+			document.getElementById('b4').classList.add('showe2');
+			document.getElementById('b1').classList.remove('showe2');
+		});
+
+		document.querySelector('.e3').addEventListener('mouseover', function() {
+			document.getElementById('b2').classList.add('showe2');
+			document.getElementById('b1').classList.add('showe2');
+			document.getElementById('b4').classList.add('showe2');
+			document.getElementById('b3').classList.remove('showe2');
+		});
+
+
+		document.querySelector('.e4').addEventListener('mouseover', function() {
+			document.getElementById('b2').classList.add('showe2');
+			document.getElementById('b3').classList.add('showe2');
+			document.getElementById('b1').classList.add('showe2');
+			document.getElementById('b4').classList.remove('showe2');
+		});
+	</script>
+
+
+</body>
+</html>
