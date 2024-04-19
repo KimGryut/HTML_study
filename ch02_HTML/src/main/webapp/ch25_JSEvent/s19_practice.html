@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습</title>
+<script type="text/javascript">
+    /*
+    [실습]
+    국어, 영어, 수학을 입력 받아서 총점, 평균을 구하여 출력.
+    - 유효성 체크 
+    	: 국어, 영어, 수학 필수 입력.
+    	: 숫자만 입력
+    	: 0~100 값만 입력
+    	
+    [출력]
+    국어, 영어, 수학, 총점, 평균 출력
+    */
+    
+    window.onload = function(){
+    		
+    		const comfirm_btn = document.getElementById('confirm_btn');
+    		
+    		comfirm_btn.onclick = function(){
+    			const korean = document.getElementById('korean');
+                if(korean.value.trim()==''){
+                    alert('국어 점수를 입력하세요');
+                    korean.value=''; // 초기화
+                    korean.focus();
+                    return;
+                }
+                if(isNaN(korean.value) || korean.value<0 || korean.value>100){
+                    alert('국어 점수는 0에서 100까지의 숫자만 입력 가능합니다.')
+                    korean.value=''; // 초기화
+                    korean.focus();
+                    return;
+                }	
+                
+                const english = document.getElementById('english');
+                if(english.value.trim()==''){
+                    alert('영어 점수를 입력하세요');
+                    english.value=''; // 초기화
+                    english.focus();
+                    return;
+                }
+                if(isNaN(english.value) || english.value<0 || english.value>100){
+                    alert('영어 점수는 0에서 100까지의 숫자만 입력 가능합니다.')
+                    english.value=''; // 초기화
+                    english.focus();
+                    return;
+                }   
+                
+                const math = document.getElementById('math');
+                if(math.value.trim()==''){
+                    alert('수학 점수를 입력하세요');
+                    math.value=''; // 초기화
+                    math.focus();
+                    return;
+                }
+                if(isNaN(math.value) || math.value<0 || math.value>100){
+                    alert('수학 점수는 0에서 100까지의 숫자만 입력 가능합니다.')
+                    math.value=''; // 초기화
+                    math.focus();
+                    return;
+                }   
+                
+                let sum = Number(korean.value.trim())+Number(english.value.trim())+Number(math.value.trim());
+                let avg = (sum/3).toFixed(2);
+                let output = '';
+                output += '<p>';
+                output += '국어 : ' + korean.value.trim() + '<br>';
+                output += '영어 : ' + english.value.trim() + '<br>';
+                output += '수학 : ' + math.value.trim() + '<br>';
+                output += '총점 : ' + sum + '<br>';
+                output += '평균 : ' + avg;
+                output += '</p>';
+
+                document.getElementById('result').innerHTML = output;
+                
+    		};
+    		
+    	};
+    
+</script>
+
+</head>
+<body>
+    <form>
+        국어 <input type="text" name="korean" id="korean"><br>
+        영어 <input type="text" name="english" id="english"><br>
+        수학 <input type="text" name="math" id="math"><br>
+        <input type="button" value="확인" id="confirm_btn">
+        <div id="result"> </div>
+    </form>
+</body>
+</html>

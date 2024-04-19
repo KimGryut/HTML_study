@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>음식 주문</title>
+<style>
+div#order {
+	margin: 0 auto;
+	width: 820px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid gray;
+}
+
+td {
+	height: 30px;
+	border: 1px solid gray;
+}
+
+td.title {
+	text-align: right;
+	background-color: ivory;
+	font-weight: bold;
+	color: #ff6600;
+	padding: 0 10px;
+}
+
+input[type="number"] {
+	text-align: right;
+	width: 50px;
+	height: 19px;
+}
+
+ul {
+	list-style: none;
+	padding: 0 10px;
+	margin: 5px;
+}
+
+ul li {
+	display: inline;
+}
+
+#totalMoney {
+	text-align: center;
+	border-style: hidden;
+	font-size: 15pt;
+	font-weight: hold;
+	color: maroon;
+}
+</style>
+
+
+<script type="text/javascript">
+	// 강사 답안
+
+	const product = {
+		c0 : 4000,
+		c1 : 5000,
+		c2 : 6000,
+	};
+
+	window.onload = function() {
+		// 체크박스에 대한 이벤트 연결
+
+		const foods = document.querySelectorAll('input[type="checkbox"]');
+		for (let i = 0; i < foods.length; i++) {
+			foods[i].onclick = function() {
+				// 이벤트가 발생한 객체를 getSum 메서드의 파라미터에 전달
+				getSum(this);
+			}
+		}
+
+		// 숫자 입력 요소에 대한 이벤트 연결
+		const quantity = document.querySelectorAll('input[type="number"]');
+		for (let i = 0; i < quantity.length; i++) {
+			quantity[i].onclick = function() {
+				getSum(this);
+			};
+			quantity[i].onkeyup = function() {
+				getSum(this);
+			}
+		}
+
+		// onclick과 onkeyup을 다 아우르는 게 oninput인 듯하다
+
+		// 지불 금액 구하는 함수
+		function getSum(obj) {
+
+			if (obj.type == 'checkbox') {
+				const input_num = document.getElementById('num_' + obj.id);
+				if (obj.checked) { // 체크박스 선택
+					input_num.value = 1; // 체크하는 순간 무조건 초기값 1
+				} else { // 체크박스 선택 해제
+					input_num.value = 0; // 체크하는 순간 0개로 바뀜
+				}
+			} else { // input type="number"
+				if(obj.value>=1){ // 숫자를 1 이상 입력(선택)했을 때
+					document.getElementById(obj.id.substr(4)).checked = true; // 4부터 끝까지 추출(checkbox의 id)
+					// 숫자를 1 이상 입력하는 순간 자동으로 체크가 눌림
+				} else{ // 숫자가 0이 되는 순간
+					document.getElementById(obj.id.substr(4)).checked = false;
+					// 숫자를 0이 되는 순간 자동으로 체크가 풀림
+				}
+			}
+
+			// 결과
+			let sum = 0;
+			// 배열에 저장된 숫자를 읽어와서 연산
+			for (let key in product) {
+				// 가격
+				sum += product[key]
+						* document.getElementById('num_' + key).value;
+			}
+
+			// 지불 금액 표시
+			const totalMoney = document.getElementById('totalMoney');
+			totalMoney.value = sum.toLocaleString();
+
+		}
+	};
+</script>
+
+</head>
+<body>
+	<div id="order">
+		<h2>계산서</h2>
+		<form action="a.jsp" method="post">
+			<table>
+				<tr>
+					<td class="title">식사류</td>
+					<td>
+						<ul>
+							<li><input type="checkbox" id="c0" name="foodname"
+								value="짜장면" class="order-item"> <label for="c0">짜장면(4,000원)</label>
+								<input type="number" id="num_c0" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+							<li><input type="checkbox" id="c1" name="foodname"
+								value="짬뽕" class="order-item"> <label for="c1">짬뽕(5,000원)</label>
+								<input type="number" id="num_c1" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+							<li><input type="checkbox" id="c2" name="foodname"
+								value="볶음밥" class="order-item"> <label for="c2">볶음밥(6,000원)</label>
+								<input type="number" id="num_c2" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td class="title">청구금액</td>
+					<td><input type="text" id="totalMoney" name="totalMoney"
+						size="15" value=0 readonly="readonly">원</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="주문">
+						<input type="reset" value="취소">
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</body>
+</html>

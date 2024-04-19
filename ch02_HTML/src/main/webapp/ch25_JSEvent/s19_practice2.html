@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습</title>
+<script type="text/javascript">
+    /*
+    [실습]
+    국어, 영어, 수학을 입력 받아서 총점, 평균을 구하여 출력.
+    - 유효성 체크 
+        : 국어, 영어, 수학 필수 입력.
+        : 숫자만 입력
+        : 0~100 값만 입력
+        
+    [출력]
+    국어, 영어, 수학, 총점, 평균 출력
+    */
+    
+    window.onload = function(){
+            
+            function checkScore(subject){
+                if(subject.value.trim()==''){
+                    alert('점수를 입력하세요');
+                    subject.value=''; // 초기화
+                    subject.focus();
+                    return false;
+                }
+                if(isNaN(subject.value) || subject.value<0 || subject.value>100){
+                    alert('점수는 0에서 100까지의 숫자만 입력 가능합니다.')
+                    subject.value=''; // 초기화
+                    subject.focus();
+                    return false;
+                }   
+                return true;
+            }
+            
+            const comfirm_btn = document.getElementById('confirm_btn');
+            
+            comfirm_btn.onclick = function(){
+                const korean = document.getElementById('korean');                
+                const english = document.getElementById('english');                
+                const math = document.getElementById('math');
+
+
+                if( checkScore(korean) && checkScore(english) && checkScore(math)) {
+                	let sum = Number(korean.value.trim())+Number(english.value.trim())+Number(math.value.trim());
+                    let avg = (sum/3).toFixed(2);
+                    let output = '';
+                    output += '<p>';
+                    output += '국어 : ' + korean.value.trim() + '<br>';
+                    output += '영어 : ' + english.value.trim() + '<br>';
+                    output += '수학 : ' + math.value.trim() + '<br>';
+                    output += '총점 : ' + sum + '<br>';
+                    output += '평균 : ' + avg;
+                    output += '</p>';
+
+                    document.getElementById('result').innerHTML = output;
+                }
+            };
+            
+        };
+    
+</script>
+
+</head>
+<body>
+    <form>
+        국어 <input type="text" name="korean" id="korean"><br>
+        영어 <input type="text" name="english" id="english"><br>
+        수학 <input type="text" name="math" id="math"><br>
+        <input type="button" value="확인" id="confirm_btn">
+        <div id="result"> </div>
+    </form>
+</body>
+</html>

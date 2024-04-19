@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 전달</title>
+<script type="text/javascript">
+/*
+ 이벤트 전파(전달) : 특정 태그에서 이벤트가 발생하면 다른 태그로 이벤트가 전달되는 현상
+ 이벤트 버블링 : 자식 노드에서 부모 노드 순으로 이벤트를 실행하는 것을 의미
+    div
+     |
+    div
+     |
+     p
+     |
+    span         <--- 이벤트 발생
+ 
+ 이벤트 캡쳐링 : 부모 노드에서 자식 노드 순으로 이벤트를 실행하는 것을 의미 (요즘 사용 안 됨)
+ */
+
+	window.onload = function() {
+		// 이벤트 연결
+		document.getElementById('space').onclick = function() {
+			alert('space');
+			this.style.background = 'pink';
+		};
+		document.getElementById('paragraph').onclick = function() {
+		    alert('paragraph')
+		    this.style.background = 'yellow';
+		    
+		    // 이벤트 전달 제거
+		    event.stopPropagation(); 
+		    // 원래는 부모 space 이벤트도 발생했는데 stopPropagation으로 전파를 막음
+		    
+		}
+	};
+	
+</script>
+
+</head>
+<body>
+    <div id="space">Space
+        <p id="paragraph">Paragraph</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서 객체 생성 및 추가</title>
+<style>
+
+    table { 
+        border-collapse: collapse; 
+    }
+    
+    table, th, td { 
+        border: 2px solid blue; 
+    }    
+    
+    th {
+        padding : 10px;
+    }
+</style>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+    	/*
+    	실습
+    	
+    	도서 정보를 table에 표시하시오
+    	(배열에는 도서명, 분류, 정상가격만 저장. 할인가격은 연산)
+    	--------------------------
+    	도서명        분류     정상가격        할인가격(5%)
+    	자바         IT      20,000원     19,000원
+    	미술사        예술      30,000원     28,500원
+    	노래연습       예술      10,000      9,500원
+    	한국사        역사      50,000원     47,000원
+    	
+    	*/
+    	
+    	const books = [
+    		{name:'자바', category:'IT', price:20000},
+    		{name:'미술사', category:'예술', price:30000},
+    		{name:'노래연습', category:'예술', price:10000},
+    		{name:'한국사', category:'역사', price:50000}
+    	];
+    	
+    	let output='<tr><th>도서명</th><th>분류</th><th>정상가격</th><th>할인가격(5%)</th></tr>';
+    	let sale = 0;
+    	$.each(books, function(index, item){
+    		sale = item.price * 0.95;
+    		output += '<tr>';
+    		output += '<th>'+ item.name+'</th>';
+    		output += '<th>'+ item.category+'</th>';
+    		output += '<th>'+ item.price.toLocaleString()+'원</th>';
+    		output += '<th>'+ sale.toLocaleString()+'원</th>';
+    		output += '</tr>';
+    	});
+    	
+    	$('#books').append(output);
+    	
+    	
+    	
+    	
+        
+    });
+</script>
+</head>
+<body>
+    <table id="books">
+        
+    </table>
+</body>
+</html>

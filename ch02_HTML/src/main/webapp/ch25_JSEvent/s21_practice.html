@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>음식 주문</title>
+<style>
+div#order {
+	margin: 0 auto;
+	width: 820px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid gray;
+}
+
+td {
+	height: 30px;
+	border: 1px solid gray;
+}
+
+td.title {
+	text-align: right;
+	background-color: ivory;
+	font-weight: bold;
+	color: #ff6600;
+	padding: 0 10px;
+}
+
+input[type="number"] {
+	text-align: right;
+	width: 50px;
+	height: 19px;
+}
+
+ul {
+	list-style: none;
+	padding: 0 10px;
+	margin: 5px;
+}
+
+ul li {
+	display: inline;
+}
+
+#totalMoney {
+	text-align: center;
+	border-style: hidden;
+	font-size: 15pt;
+	font-weight: hold;
+	color: maroon;
+}
+</style>
+
+
+<script type="text/javascript">
+	/*
+	[실습]
+	
+	 */
+
+	/* window.onload = function() {
+		// 음식 가격 정보
+		const product = {
+			c0 : 4000,
+			c1 : 5000,
+			c2 : 6000,
+		};
+
+		// 총 가격
+		let sum = 0;
+
+		// 속성 선택자 이용
+		const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		const numberInputs = document.querySelectorAll('input[type="number"]');
+
+		// 반복문을 이용한 이벤트 연결
+		for (let i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].onclick = function() {
+				numberInputs[i].oninput = function() {
+					const number = document.getElementById('num_' + this.id);
+					if (this.checked) { // 체크박스 선택 
+						sum += product[this.id] * parseInt(number.value);
+						alert(sum);
+					} else { // 체크박스 해제
+						sum -= product[this.id] * parseInt(number.value);
+						alert(sum);
+					}
+					// 구매 비용과 배송비를 화면에 표시
+					const totalMoney = document.getElementById('totalMoney');
+					totalMoney.innerHTML = sum.toLocaleString();
+				};
+			};
+		}
+	}; */
+
+	window.onload = function() {
+		// 음식 가격 정보
+		const product = {
+			c0 : 4000,
+			c1 : 5000,
+			c2 : 6000,
+		};
+
+		// 총 가격
+		let sum = 0;
+
+		// 속성 선택자 이용
+		const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		const numberInputs = document.querySelectorAll('input[type="number"]');
+
+		// 체크 박스가 체크될 때나 수량이 변경될 때 전부 함수 작동시켜야 가격이 업데이트됨
+
+		// 숫자 입력 요소에 대한 이벤트 연결
+		for (let i = 0; i < numberInputs.length; i++) {
+			numberInputs[i].oninput = updateTotal; // 함수 참조 (소괄호 사용x)
+		}
+
+		// 체크박스에 대한 이벤트 연결 
+		for (let i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].onclick = updateTotal; // 함수 참조 (소괄호 사용x)
+		}
+
+		// 총 가격 업데이트 함수
+		function updateTotal() {
+			sum = 0; // 무조건 0으로 초기화
+			for (let i = 0; i < checkboxes.length; i++) {
+				if (checkboxes[i].checked) { // 체크박스가 체크되어 있다면 발동
+					const number = document.getElementById('num_'
+							+ checkboxes[i].id);
+					sum += product[checkboxes[i].id] * parseInt(number.value);
+				}
+			}
+			// 구매 비용과 배송비를 화면에 표시
+			const totalMoney = document.getElementById('totalMoney');
+			totalMoney.value = sum.toLocaleString();
+		}
+	};
+</script>
+
+</head>
+<body>
+	<div id="order">
+		<h2>계산서</h2>
+		<form action="a.jsp" method="post">
+			<table>
+				<tr>
+					<td class="title">식사류</td>
+					<td>
+						<ul>
+							<li><input type="checkbox" id="c0" name="foodname"
+								value="짜장면" class="order-item"> <label for="c0">짜장면(4,000원)</label>
+								<input type="number" id="num_c0" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+							<li><input type="checkbox" id="c1" name="foodname"
+								value="짬뽕" class="order-item"> <label for="c1">짬뽕(5,000원)</label>
+								<input type="number" id="num_c1" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+							<li><input type="checkbox" id="c2" name="foodname"
+								value="볶음밥" class="order-item"> <label for="c2">볶음밥(6,000원)</label>
+								<input type="number" id="num_c2" name="foodOrderCnt" value="0"
+								min="0" max="99" class="order-item"></li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td class="title">청구금액</td>
+					<td><input type="text" id="totalMoney" name="totalMoney"
+						size="15" value=0 readonly="readonly">원</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="주문">
+						<input type="reset" value="취소">
+				</tr>
+			</table>
+		</form>
+
+	</div>
+</body>
+</html>
