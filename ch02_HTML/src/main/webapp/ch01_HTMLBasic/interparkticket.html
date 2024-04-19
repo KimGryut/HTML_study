@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+	rel="stylesheet">
+<meta charset="UTF-8">
+<title>Interpark Ticket</title>
+<style>
+
+/*기본 설정*/
+#container {
+	width: 1600px;
+	margin: 0 auto;
+	
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+
+/*header 스타일 지정*/
+header {
+	width: 100%;
+	height: 100px;
+}
+
+
+/*메뉴*/
+nav{
+	margin-top:90px;
+	margin-left: 20%;
+	height: 100px;
+	background: white;
+	justify-content: center;
+}
+
+
+/*인터파크 로고*/
+.head-logo{
+	float: left;
+	margin-left: 20%;
+	margin-top: 20px;
+	width: 200px;
+	
+}
+
+.head-logo img{
+	width: 100%;
+}
+
+
+/*검색박스*/
+.search-menu{
+	float: left;
+	margin-left: 1%;
+	margin-top: 28px;
+	width:350px;
+}
+
+.input-search {
+	display: block;
+	float: left;
+	background-color:#ffffff;
+	border: 1px solid #cccccc;
+				 /*상좌 상우 하우 하좌*/
+	border-radius: 15px 0 0 15px;
+	width: 300px;
+	height: 40px;
+	padding: 0 0 0 10px;
+	font-size: 12px;
+	color: #555555;
+}
+
+.input-search-submit {	
+	width:50px;
+	height:40px;
+		   		/*상좌 상우 하우 하좌*/
+	border-radius: 0 15px 15px 0;
+	border: 1px solid #cccccc;
+	margin-left: -1px;
+}
+
+/*로그인 메뉴, 메인 메뉴*/
+.login-menu{
+	float: left;
+	margin-left: 20%;
+	margin-top: 38px;
+}
+
+.login-menu-list, .main-menu-list, .video-menu-list, .review-all-menu-list, .last-menu-list {
+	list-style: none;
+}
+
+.login-menu-list li, .main-menu-list li, .video-menu-list li, .review-all-menu-list li, .last-menu-list li {
+	display: inline; 
+}
+
+.login-menu-list li a {
+	text-decoration: none;
+	color: #4a4a4a;
+	display: inline-block;
+	text-align: center;
+	font-size: 10pt;
+	font-family: "Gothic A1";
+	margin-right: 15px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+.main-menu-list li a{
+	text-decoration: none;
+	color: black;
+	display: inline-block;
+	text-align: center;
+	font-size: 13pt;
+	font-weight: bold;
+	font-family: "Gothic A1";
+	margin-right: 15px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+.main-menu-list li a:hover {
+	border: 1px solid black;
+	border-width: 2px;
+	border-top-color: white;
+	border-right-color: white;
+	border-left-color: white;
+	text-decoration: none;
+}
+
+.main-menu-list li a.p {
+	color: #a91df0;
+}
+
+
+/*광고 배너*/
+#ad_banner{
+	margin-top:100px;
+	width: 100%;
+	height: 700px;
+}
+
+.ad-box{
+	position: relative; /*div 겹치게 하려면 부모엔 relativ, 자식엔 absolute*/
+}
+
+.advertisement {
+	position: absolute;
+	overflow: hidden;
+}
+
+.ad-image{
+	clear:both;
+	width:1600px;	
+}
+
+
+.ad-icon1 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	overflow: hidden;
+	left:3%;
+	top:550px;
+}
+
+.ad-icon2 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	overflow: hidden;
+	left: 10%;
+	top:550px;
+}
+
+.ad-icon3 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	overflow: hidden;
+	left: 17%;
+	top:550px;
+}
+
+.ad-icon4 {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	left: 24%;
+	top:550px;
+}
+
+.icon-image {
+	clear:both;	
+	width:80px;
+}
+
+/*배너 투명하게 만들어서 없애기 > 자바 스크립트랑 연동해서 배너 바꾸기 위한 장치*/
+.show-banner{
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+
+/*광고 카드*/
+#ad_card{
+	margin-top:100px;
+	width: 100%;
+	height: 430px;
+}
+
+.ad-card-box{
+	position: relative;
+}
+
+/*광고 카드 공통 스타일*/
+#card-layout{
+	border-radius: 10px;
+	position: absolute;
+	width: 460px;
+	height: 150px;
+	overflow: hidden;
+	line-height: 50px;
+}
+
+.adcard1 {	
+	left: 93px;
+	top: 50px;
+	background: url("../files/q1.jpg");
+	background-size: cover;
+}
+
+.adcard2 {
+	left: 50%;
+	transform: translateX(-50%);
+	top: 50px;
+	background: url("../files/q2.jpg");
+	background-size: cover;
+}
+
+.adcard3 {
+	right: 93px;
+	top: 50px;
+	background: url("../files/q3.jpg");
+	background-size: cover;
+}
+
+.adcard4 {
+	left: 93px;
+	top: 220px;
+	background: url("../files/q4.jpg");
+	background-size: cover;
+}
+
+.adcard5 {
+	left: 50%;
+	transform: translateX(-50%);
+	top: 220px;
+	background: url("../files/q5.jpg");
+	background-size: cover;
+}
+
+.adcard6 {
+	right: 93px;
+	top: 220px;
+	background: url("../files/q6.jpg");
+	background-size: cover;
+}
+
+.card-image, .real-ad-image, .poster-image, .profile-image{
+	width:100%;
+}
+
+
+.adcard-word{
+	color: white;
+	font-size: 20pt;
+	font-family: "Noto Sans KR";
+	text-shadow: 1px 1px black;
+	padding-top:20px;
+}
+
+.adcard-sen{
+	color: white;
+	font-size: 13pt;
+	font-family: "Noto Sans KR";
+	text-shadow: 0.5px 0.5px black;
+}
+
+
+/*추천 영상 메뉴*/
+#video_play{
+	margin-top:100px;
+	width: 100%;
+	height: 700px;
+}
+
+.video-box{
+	position: relative;
+}
+
+.video-menu-title{
+	position: absolute;
+	left: 50%;
+	top:50px;
+	transform: translateX(-50%);
+	width: 400px;
+	height: 70px;
+	text-align:center;
+}
+
+.video-menu-title h1 .review-title h1{
+	font-family: "Noto Sans KR";
+	font-size:30pt;
+}
+
+.video-menu{
+	position: absolute;
+	width: 1500px;
+	height: 80px;
+	top:140px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid white;
+}
+
+ul.video-menu-list{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+ul.video-menu-list li a {
+	text-decoration: none;
+	color: #636363;
+	text-align: center;
+	font-size: 14pt;
+	font-family: "Gothic A1";
+	margin-right: 30px;
+	height: 30px;
+	padding: 12px 20px;
+	border: 0.5px solid #d6d6d6;
+	border-radius: 40px;
+	line-height: 30px;
+	background:white;
+}
+
+ul.video-menu-list li a:hover {
+	background-color: #a91df0;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.video1, .video2, .video3{
+	border-radius: 10px;
+	border: 1px solid #d6d6d6;
+	position: absolute;
+	width: 400px;
+	height: 280px;
+	line-height: 30px;
+	word-break:break-all;
+}
+
+.video1{
+	top:230px;
+	left:10%;
+}
+
+.video2{
+	top:230px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.video3{
+	top:230px;
+	right:10%;
+}
+
+.video1 span, .video2 span, .video3 span{
+	font-size: 15pt;
+	font-weight: bold;
+	font-family: "Gothic A1";
+	padding: 5px 10px 0 10px;
+}
+
+
+/*진짜 광고*/
+#real_ad{
+	width: 100%;
+	height: 300px;
+}
+
+.real-ad{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1400px;
+}
+
+
+/*후기 모음*/
+#review_menu{
+	width: 100%;
+	height: 1200px;
+}
+	
+.review-box{
+	position: relative;
+}
+.review-title{
+	position: absolute;
+	left: 50%;
+	top:50px;
+	transform: translateX(-50%);
+	width: 400px;
+	height: 70px;
+	text-align:center;
+}
+
+
+/*리뷰 상자 공통 설정*/
+.review1, .review2, .review3, .review4{
+	position: absolute;
+	width: 700px;
+	height: 350px;
+}
+
+.review1{
+	left:50px;
+	top:150px;
+}
+
+.review2{
+	right:50px;
+	top:150px;
+}
+
+.review3{
+	left:50px;
+	top:550px;
+}
+
+.review4{
+	right:50px;
+	top:550px;
+}
+
+.poster{
+	position: absolute;
+	right:10px;
+	top:75px;
+	border: 0.5px solid #d6d6d6;
+	border-radius: 10px;
+	width: 170px;
+	height: 220px;
+	text-align: center;
+	position: absolute;
+	overflow: hidden;
+}
+
+.title {
+	width: 250px;
+	height: 50px;
+	position: absolute;
+	top:58px;
+	left:30px;
+}
+
+.title h3{
+	font-size:18pt;
+	font-family: "Noto Sans KR";
+}
+
+.info {
+	width: 250px;
+	height: 30px;
+	position: absolute;
+	top: 20px;
+	left: 30px;
+}
+
+.info span {
+	color: #999999;
+	font-size: 16pt;
+	font-family: "Noto Sans KR";
+}
+
+
+.review-content {
+	width: 450px;
+	height: 150px;
+	position: absolute;
+	top:110px;
+	left:30px;
+}
+
+.review-content p{
+	color: #999999;
+	font-size: 13pt;
+	font-family: "Noto Sans KR";
+	letter-spacing: 0.9px;
+}
+
+.profile {
+	border-radius: 50px;
+	position: absolute;
+	bottom:30px;
+	left:30px;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+}
+
+.nickname {
+	position: absolute;
+	bottom: 44px;
+	left: 85px;
+	width: 50px;
+	height: 20px;
+}
+
+.nickname span {
+	color: #999999;
+	font-family: "Noto Sans KR";
+}
+
+.review-all-menu{
+	position: absolute;
+	width: 200px;
+	height: 30px;
+	top:1000px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.review-all-menu-list li a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+	font-size: 13pt;
+	font-family: "Gothic A1";
+	height: 30px;
+	padding: 15px 20px;
+	border: 0.5px solid #d6d6d6;
+	border-radius: 30px;
+	justify-content: center;
+	line-height: 30px;
+}
+
+
+ul.review-all-menu-list li a:hover {
+	background-color: #a91df0;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+
+/*꼬리말 설정*/
+#last_box{
+	margin-top:100px;
+	width: 100%;
+	height: 250px;
+	background: #ebebeb;
+}
+
+.last-box{
+	position: relative;
+}
+
+.last-menu{
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+ul.last-menu-list li a {
+	text-decoration: none;
+	color: gray;
+	display: inline-block;
+	text-align: center;
+	font-size: 12pt;
+	font-family: "Gothic A1";
+	margin-right: 40px;
+	height: 30px;
+	padding-top: 3px;
+	padding-left: 6px;
+}
+
+ul.last-menu-list li a:hover{
+	color: black;
+	font-weight:bold;
+}
+
+.last-content1, .last-content2, .last-content3{
+	position: absolute;
+	width: 470px;
+	height: 180px;
+}
+
+.last-content1{
+	top: 80px;
+	left: 50px;
+}
+
+.last-content2{
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.last-content3{
+	top: 80px;
+	right: 50px;
+}
+
+.last-title{
+	color:gray;
+	font-size:13pt;
+	font-weight: bold;
+}
+
+.last-text{
+	color:#ADAFAD;
+	font-size:10pt;
+}
+
+
+</style>
+
+</head>
+<body>
+	<div id="container">
+		<!-- 머리말 시작 -->
+		<header>
+			<!-- 로고 -->
+			<div class="head-logo">
+				<img src="../files/logo.png">
+			</div>
+
+			<!-- 검색 박스 -->
+			<div class="search-menu">
+				<form>
+					<input type="search" class="input-search"
+						placeholder="&nbsp;&nbsp;&nbsp;청년문화예술패스 최대 15만원 지원!"> <input
+						type="submit" class="input-search-submit" value="검색">
+				</form>
+			</div>
+
+			<!-- 로그인 메뉴 -->
+			<div class="login-menu">
+				<ul class="login-menu-list">
+					<li><a href="#">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
+					<li><a href="#">마이페이지</a></li>
+				</ul>
+			</div>
+			<br>
+
+			<!-- 내비게이션 시작 -->
+			<nav>
+
+				<!-- 메인 메뉴 -->
+				<ul class="main-menu-list">
+					<li><a href="#">뮤지컬</a></li>
+					<li><a href="#">콘서트</a></li>
+					<li><a href="#">스포츠</a></li>
+					<li><a href="#">전시/행사</a></li>
+					<li><a href="#">클래식/무용</a></li>
+					<li><a href="#">아동/가족</a></li>
+					<li><a href="#">연극</a></li>
+					<li><a href="#">레저/캠핑</a></li>
+					<li><a href="#">토핑</a></li>
+					<li><a href="#">MD샵</a></li>
+
+					<li><a href="#" class="p">랭킹</a></li>
+					<li><a href="#" class="p">오픈공지</a></li>
+					<li><a href="#" class="p">지역별</a></li>
+					<li><a href="#" class="p">공연장</a></li>
+				</ul>
+			</nav>
+			<!-- 네비게이션 종료 -->
+		</header>
+		<!-- 머리말 종료 -->
+
+		<!-- 내용 시작 -->
+		<section id="ad_banner">
+
+			<!-- 큰 광고 사진 -->
+			<div class="ad-box">
+				<div class="advertisement">
+					<img src="../files/b1.jpg" class="ad-image" id="banner1">
+				</div>
+				<div class="advertisement">
+					<img src="../files/b2.jpg" class="ad-image" id="banner2">
+				</div>
+				<div class="advertisement">
+					<img src="../files/b3.jpg" class="ad-image" id="banner3">
+				</div>
+				<div class="advertisement">
+					<img src="../files/b4.jpg" class="ad-image" id="banner4">
+				</div>
+			</div>
+
+			<!-- 아이콘처럼 작은 사진 -->
+			<div class="ad-box">
+				<div class="ad-icon1">
+					<img src="../files/e1.jpg" class="icon-image">
+				</div>
+				<div class="ad-icon2">
+					<img src="../files/e2.jpg" class="icon-image">
+				</div>
+				<div class="ad-icon3">
+					<img src="../files/e3.jpg" class="icon-image">
+				</div>
+				<div class="ad-icon4">
+					<img src="../files/e4.jpg" class="icon-image">
+				</div>
+			</div>
+		</section>
+
+
+		<!-- 광고 카드 -->
+		<section id="ad_card">
+			<div class="ad-card-box">
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard1">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 하데스타운</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;기다려줘
+						내가 갈게</span>
+				</div>
+
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard2">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 사의찬미</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;난
+						그런 사랑을 원해</span>
+				</div>
+
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard3">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 아가사</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;여긴
+						내 꿈속이잖아</span>
+				</div>
+
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard4">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;연극 작은 아씨들</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;난
+						천국에서도 그리워할 거야</span>
+				</div>
+
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard5">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;연극 오만과 편견</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;언제부터
+						나를 좋아하게 된 거예요?</span>
+				</div>
+
+				<!-- 광고 이미지 -->
+				<div id="card-layout" class="adcard6">
+					<h3 class="adcard-word">&nbsp;&nbsp;&nbsp;&nbsp;뮤지컬 배니싱</h3>
+					<span class="adcard-sen">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;널
+						좀 봐, 나랑 똑같아</span>
+				</div>
+
+			</div>
+
+		</section>
+
+		<!-- 추천 비디오 메뉴 -->
+		<section id="video_play">
+
+			<div class="video-box">
+				<div class="video-menu-title">
+					<h1 class="v-title">인터파크 PLAY</h1>
+				</div>
+
+				<div class="video-menu">
+					<ul class="video-menu-list">
+						<li><a href="#">추천영상</a></li>
+						<li><a href="#">뮤지컬</a></li>
+						<li><a href="#">콘서트</a></li>
+						<li><a href="#">클래식/무용</a></li>
+						<li><a href="#">연극</a></li>
+					</ul>
+				</div>
+
+				<div class="video1">
+					<iframe width="100%" height="200px"
+						src="https://www.youtube.com/embed/7Txlpjh3Cjc?si=5hrL7s3UbNMamnG3"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<span>&nbsp;뮤지컬 '하데스타운' Epic III song by 조형균</span>
+				</div>
+
+				<div class="video2">
+					<iframe width="100%" height="200px"
+						src="https://www.youtube.com/embed/Ehzcx3Qr32A?si=zekuGQGJ-r3jhauO"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<span>&nbsp;[2022 사의찬미] 음원 공개 ♬난 그런 사랑을 원해</span>
+				</div>
+
+
+				<div class="video3">
+					<iframe width="100%" height="200px"
+						src="https://www.youtube.com/embed/3vJX_p9iBzA?si=R20KnsWr529cfHXv"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<span>&nbsp;뮤지컬 아가사 AGATHA 스페셜 커튼콜 ‘꿈 속으로‘ - 이정화</span>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- 중간에 진짜 광고 같은 광고 -->
+		<section id="real_ad">
+			<div class="real-ad">
+				<img src="../files/ad.png" class="real-ad-image">
+			</div>
+		</section>
+
+
+		<!-- 리뷰 -->
+		<section id="review_menu">
+			<div class="review-box">
+				<div class="review-title">
+					<h1>베스트 관람후기</h1>
+				</div>
+
+				<div class="reviews">
+					<div class="review1">
+						<div class="poster">
+							<img src="../files/p1.jpg" class="poster-image">
+						</div>
+						<div class="title">
+							<h3>추리소설의 여왕!</h3>
+						</div>
+						<div class="info">
+							<span>뮤지컬 &lt;아가사&gt;</span>
+						</div>
+						<div class="review-content">
+							<p>평소 추리소설을 좋아해서 관심 갖게 된 뮤지컬이었는데 관람하고 무척 만족했습니다. 미래와 과거, 소설과
+								현실, 저택과 호텔을 넘나드는 내용 속 마냥 무겁지만 않게 미스터리한 분위기가 좋았어요. 또 3층까지 가득 차 있는
+								무대 세트, 공간과 시점을 오가는 극 내용을 친절하게 알려주는 LED 무대 배경이 인상 깊었습니다!</p>
+						</div>
+						<div class="profile">
+							<img src="../files/pf1.png" class="profile-image">
+						</div>
+						<div class="nickname">
+							<span>luvmeor*****</span>
+						</div>
+					</div>
+
+
+					<div class="review2">
+						<div class="poster">
+							<img src="../files/p2.jpg" class="poster-image">
+						</div>
+						<div class="title">
+							<h3>중독성 있는 넘버</h3>
+						</div>
+						<div class="info">
+							<span>뮤지컬 &lt;사의찬미&gt;</span>
+						</div>
+						<div class="review-content">
+							<p>평친구가 추천해줘서 보러갔다가 넘버에 중독돼서 나옴. 정말 하루종일 날개가 찢긴 한마리의 물새~~ 저
+								바다에 쓴다~~~~~~~ 광!!! 막한~~~~ 가정도 지위도 재산도 신분도!! ...사랑도. 거리고 있는 나 자신을
+								발견할 수 있음... 개인적으로 얼른 돌아왔으면 좋겠는 뮤지컬 탑쓰리 안에 듦. 화범 제발...</p>
+						</div>
+						<div class="profile">
+							<img src="../files/pf2.png" class="profile-image">
+						</div>
+						<div class="nickname">
+							<span>ddang*****</span>
+						</div>
+					</div>
+
+
+					<div class="review3">
+						<div class="poster">
+							<img src="../files/p3.jpg" class="poster-image">
+						</div>
+						<div class="title">
+							<h3>배꼽 잡고 나왔어요</h3>
+						</div>
+						<div class="info">
+							<span>연극 &lt;아트&gt;</span>
+						</div>
+						<div class="review-content">
+							<p>드라마에서 본 배우분들이 연극을 하신다길래 보러 갔는데 100분 동안 진짜 재밌고 웃겼어요 생각보다
+								친구관계에 대한 여러 생각이 드는 작품이기도 했고요 다음에 다른 배우님들 볼 때는 꼭 친구랑 같이 가서 끝나고
+								얘기해보고 싶네요! ㅎㅎ</p>
+						</div>
+						<div class="profile">
+							<img src="../files/pf3.png" class="profile-image">
+						</div>
+						<div class="nickname">
+							<span>leave*******</span>
+						</div>
+					</div>
+
+
+					<div class="review4">
+						<div class="poster">
+							<img src="../files/p4.jpg" class="poster-image">
+						</div>
+						<div class="title">
+							<h3>역시 명작은 명작!</h3>
+						</div>
+						<div class="info">
+							<span>연극 &lt;오만과 편견&gt;</span>
+						</div>
+						<div class="review-content">
+							<p>연극은 처음이었는데 신선했던 것 같아요. 특히 오만과 편견은 1인 다역으로 진행되는 연극이라 정말
+								신기했어요. 처음에는 캐릭터를 구분하지 못하면 어떡하나 걱정했는데, 워낙 캐릭터별로 특징이 뚜렷하고 배우님들이 톤도
+								확실하게 구분해주셔서 어렵지 않게 구분할 수 있었습니다. 내용도 재밌고 좋았어요!</p>
+						</div>
+						<div class="profile">
+							<img src="../files/pf4.png" class="profile-image">
+						</div>
+						<div class="nickname">
+							<span>kkakoong****</span>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 리뷰 전체 보기 -->
+				<div class="review-all-menu">
+					<ul class="review-all-menu-list">
+						<li><a href="#">관람후기 전체보기 &gt;</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- 내용 종료 -->
+		
+		
+		<!-- 꼬리말 시작 -->
+		<footer id="last_box">
+
+			<div class="last-box">
+				<div class="last-menu">
+					<ul class="last-menu-list">
+						<li><a href="#">회사소개</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li><a href="#">개인정보처리방침</a></li>
+						<li><a href="#">티켓판매안내</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">고객센터</a></li>
+					</ul>
+				</div>
+
+
+				<div class="last-content1">
+					<p class="last-title">(주)인터파크트리플</p>
+					<p class="last-text">
+						주소 서울시 강남구 삼성로 512 삼성동빌딩 10층 <br> 사업자등록번호 824-81-02515
+						사업자정보확인 <br> 통신판매업신고 2022-서울강남-02179 <br> 관광사업증 등록번호 :
+						제2014-42호 <br> 호스팅서비스제공자 (주)인터파크트리플｜대표이사 최휘영
+					</p>
+				</div>
+
+				<div class="last-content2">
+					<p class="last-title">전자금융거래 분쟁처리 담당</p>
+					<p class="last-text">
+						투어 1588-3443｜티켓 1544-1555 <br> 팩스 02-830-8295｜이메일
+						intersolution@interparktriple.com <br> 개인정보보호책임자
+						cpo@interparktriple.com
+					</p>
+				</div>
+
+				<div class="last-content3">
+					<p class="last-title">고객센터</p>
+					<p class="last-text">
+						투어 1588-3443｜티켓 1544-1555 <br> 팩스 02-830-7807｜이메일
+						helpdesk@interparktriple.com<br> 해외항공 02-3479-4399｜국내항공
+						02-3479-4340<br> 투어 1:1문의｜티켓 1:1문의
+					</p>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	
+	
+	<script>
+		document.querySelector('.ad-icon2').addEventListener('mouseover', function() {
+			document.getElementById('banner1').classList.add('show-banner');
+			document.getElementById('banner3').classList.add('show-banner');
+			document.getElementById('banner4').classList.add('show-banner');
+			document.getElementById('banner2').classList.remove('show-banner');
+		});
+
+
+		document.querySelector('.ad-icon1').addEventListener('mouseover', function() {
+			document.getElementById('banner2').classList.add('show-banner');
+			document.getElementById('banner3').classList.add('show-banner');
+			document.getElementById('banner4').classList.add('show-banner');
+			document.getElementById('banner1').classList.remove('show-banner');
+		});
+
+		document.querySelector('.ad-icon3').addEventListener('mouseover', function() {
+			document.getElementById('banner2').classList.add('show-banner');
+			document.getElementById('banner1').classList.add('show-banner');
+			document.getElementById('banner4').classList.add('show-banner');
+			document.getElementById('banner3').classList.remove('show-banner');
+		});
+
+
+		document.querySelector('.ad-icon4').addEventListener('mouseover', function() {
+			document.getElementById('banner2').classList.add('show-banner');
+			document.getElementById('banner3').classList.add('show-banner');
+			document.getElementById('banner1').classList.add('show-banner');
+			document.getElementById('banner4').classList.remove('show-banner');
+		});
+	</script>
+
+
+
+</body>
+</html>
